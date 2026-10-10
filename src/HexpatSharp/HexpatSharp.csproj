@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>HexpatSharp</RootNamespace>
+    <AssemblyName>HexpatSharp</AssemblyName>
+    <Version>1.0.0</Version>
+    <Authors>Aiden A</Authors>
+    <Description>An interpreter for ImHex's pattern language (hexpat): lays out structs, enums, bitfields, arrays and pointers over binary data.</Description>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="HexpatSharp.Tests" />
+  </ItemGroup>
+
+</Project>
