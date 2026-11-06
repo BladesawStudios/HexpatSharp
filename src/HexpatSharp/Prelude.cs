@@ -4,6 +4,17 @@ namespace HexpatSharp;
 internal static class Prelude
 {
     public const string Source = """
+        namespace std {
+            struct Array<T, auto Size> {
+                T data[Size];
+            };
+
+            struct ByteSizedArray<T, auto NumBytes> {
+                u64 _startAddress = $;
+                T array[while($ - _startAddress < NumBytes)];
+            };
+        }
+
         namespace std::mem {
             struct AlignTo<auto Alignment> {
                 padding[(Alignment - ($ % Alignment)) % Alignment];

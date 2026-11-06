@@ -821,7 +821,8 @@ public sealed class Parser(List<Token> tokens)
 
     private static readonly string[][] Levels =
     [
-        ["||"], ["^^"], ["&&"], ["|"], ["^"], ["&"], ["==", "!="], ["<", ">", "<=", ">="], ["<<", ">>"], ["+", "-"], ["*", "/", "%"],
+        // As in ImHex, and unlike C, the bit operators bind tighter than comparisons: a & 0x80 == 0 is (a & 0x80) == 0.
+        ["||"], ["^^"], ["&&"], ["==", "!="], ["<", ">", "<=", ">="], ["|"], ["^"], ["&"], ["<<", ">>"], ["+", "-"], ["*", "/", "%"],
     ];
 
     // The binary operator at the current position (merging touching '>' tokens), and how many tokens it takes.

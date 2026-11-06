@@ -252,6 +252,13 @@ internal sealed partial class Interpreter
             {
                 if (s.Find(member.Name) is { } found) return Value.FromPattern(found);
                 if (s.Locals.TryGetValue(member.Name, out Value? local)) return local;
+                if (member.Name == "parent")
+                {
+                    // parent.parent: the struct around this one, past any array it is an element of.
+                    Pattern? up = s.Parent;
+                    while (up is ArrayPattern) up = up.Parent;
+                    return up is null ? throw Fail("this struct has no parent", member) : Value.FromPattern(up);
+                }
                 throw Fail($"'{s.TypeName}' has no member '{member.Name}'", member);
             }
             case BitfieldPattern bf:
